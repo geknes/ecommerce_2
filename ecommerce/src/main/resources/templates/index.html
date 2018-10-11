@@ -14,6 +14,18 @@
   <body>
 
     <header>
+    	<p>Welcome to <span th:text="${appName}">Our App</span></p>
+    	<div sec:authorize="isAuthenticated()">
+	  		This content is only shown to authenticated users.
+		</div>
+    	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		  	This content is only shown to administrators.
+		</div>
+		<div sec:authorize="hasRole('ROLE_USER')">
+		  	This content is only shown to users.
+		</div>
+		
+		Logged user: <span sec:authentication="name">Bob</span>
         <div class="container-fluid p-0">
             <div class="row d-none d-sm-block">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-lg-1">
@@ -50,7 +62,7 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link small" href="pages/productos-admin.html">Iniciar Sesión</a>
+                                <a class="nav-link small" th:href="@{/login}">Iniciar Sesión</a>
 
                             </li>
 
