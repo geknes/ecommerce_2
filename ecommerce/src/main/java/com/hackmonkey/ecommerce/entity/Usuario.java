@@ -17,8 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 //import com.adminportal.domain.security.Authority;
 //import com.adminportal.domain.security.UserRole;

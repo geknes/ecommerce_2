@@ -30,10 +30,10 @@ public class EcommerceApplication {
 		user1.setEmail("admin@gmail.com");
 		Set<UsuarioRol> usuarioRols = new HashSet<>();
 		Rol role1= new Rol();
-		role1.setIdRol(0);;
+		role1.setIdRol(0);
 		role1.setNombreRol("ROLE_ADMIN");
 		usuarioRols.add(new UsuarioRol(user1, role1));
-		
+		System.out.println("INICIO RUN()");
 		usuarioService.crearUsuario(user1, usuarioRols);
 	}
 }
