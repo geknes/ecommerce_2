@@ -24,5 +24,10 @@ public class SegmentoServiceImpl implements SegmentoService{
 	{
 		return (List<Segmento>) segmentoDAO.findAll();
 	}
+
+	@Override
+	public void eliminar(Long id) {
+		segmentoDAO.deleteById(id);
+	}
 	
 }

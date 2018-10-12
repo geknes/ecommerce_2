@@ -10,4 +10,6 @@ public interface SegmentoService {
 	public Segmento guardar(Segmento segmento);
 	
 	public List<Segmento> listar();
+	
+	public void eliminar(Long id);
 }
