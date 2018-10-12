@@ -1,6 +1,6 @@
 package com.hackmonkey.ecommerce.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -8,19 +8,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.hackmonkey.ecommerce.service.impl.UsuarioSecurityServiceImpl;
+import com.hackmonkey.ecommerce.util.SeguridadUtilidad;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception
-	{
-		auth.inMemoryAuthentication()
-			.withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
-	}
+	@Autowired
+	private UsuarioSecurityServiceImpl usuarioSecurityServiceImpl;
 	
 	private static final String[] PUBLIC_MATCHERS = {
 			"/css/**",
@@ -83,11 +82,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	      .failureUrl("/login?error=true");
 	      */
 	}
-	
+/*	
 	@Bean
 	public PasswordEncoder passwordEncoder()
 	{
 		return new BCryptPasswordEncoder();
+	}
+*/	
+	private BCryptPasswordEncoder passwordEncoder() {
+		return SeguridadUtilidad.passwordEncoder();
+	}
+	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(usuarioSecurityServiceImpl).passwordEncoder(passwordEncoder());
 	}
 	
 }

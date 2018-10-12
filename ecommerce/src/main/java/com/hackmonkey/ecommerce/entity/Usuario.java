@@ -1,9 +1,7 @@
 package com.hackmonkey.ecommerce.entity;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,18 +12,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 //import com.adminportal.domain.security.Authority;
 //import com.adminportal.domain.security.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hackmonkey.ecommerce.entity.seguridad.Autoridad;
 import com.hackmonkey.ecommerce.entity.seguridad.UsuarioRol;
 
 @Entity
 @Table(name="usuario")
-public class Usuario implements Serializable{
+public class Usuario implements UserDetails{
 
 	/**
 	 * 
@@ -148,6 +148,39 @@ public class Usuario implements Serializable{
 		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", password=" + password
 				+ ", primerNombre=" + primerNombre + ", apellido=" + apellido + ", email=" + email + ", telefono="
 				+ telefono + ", enable=" + enable + ", usuarioRols=" + usuarioRols + "]";
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Set<GrantedAuthority> autoridades = new HashSet<>();
+		
+		usuarioRols.forEach(ur -> autoridades.add(new Autoridad(ur.getRol().getNombreRol())));
+		
+		return autoridades;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return enable;
 	}
 	
 	
