@@ -12,8 +12,8 @@
   </head>
 
   <body>
-
-    <header>
+	<div th:replace="common/header :: navbar"></div>
+  <!--  <header>
     	<p>Welcome to <span th:text="${appName}">Our App</span></p>
     	<div sec:authorize="isAuthenticated()">
 	  		This content is only shown to authenticated users.
@@ -24,6 +24,12 @@
 		<div sec:authorize="hasRole('ROLE_USER')">
 		  	This content is only shown to users.
 		</div>
+		
+		<span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}">Sign Out</a>
+                </span>
 		
 		Logged user: <span sec:authentication="name">Bob</span>
         <div class="container-fluid p-0">
@@ -152,7 +158,7 @@
         </div>
     </header>
 
-
+-->
 
     <main>
 

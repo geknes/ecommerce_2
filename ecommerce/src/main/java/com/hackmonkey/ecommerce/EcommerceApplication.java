@@ -27,6 +27,8 @@ public class EcommerceApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		Usuario user1 = new Usuario();
 		user1.setUsername("admin");
+		user1.setPrimerNombre("Jorge");
+		user1.setApellido("Graza");
 		user1.setPassword(SeguridadUtilidad.passwordEncoder().encode("admin"));
 		//user1.setPassword("admin");
 		user1.setEmail("admin@gmail.com");
