@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.hackmonkey.ecommerce.service.impl.UsuarioSecurityServiceImpl;
+import com.hackmonkey.ecommerce.service.implementacion.UsuarioSecurityServiceImpl;
 import com.hackmonkey.ecommerce.util.SeguridadUtilidad;
 
 @Configuration

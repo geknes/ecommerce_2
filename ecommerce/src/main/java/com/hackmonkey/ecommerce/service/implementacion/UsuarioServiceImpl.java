@@ -1,4 +1,4 @@
-package com.hackmonkey.ecommerce.service.impl;
+package com.hackmonkey.ecommerce.service.implementacion;
 
 import java.util.Set;
 
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.hackmonkey.ecommerce.entity.Usuario;
 import com.hackmonkey.ecommerce.entity.seguridad.UsuarioRol;
-import com.hackmonkey.ecommerce.repository.RolDAO;
-import com.hackmonkey.ecommerce.repository.UsuarioDAO;
-import com.hackmonkey.ecommerce.service.UsuarioService;
+import com.hackmonkey.ecommerce.repository.interfaces.RolDAO;
+import com.hackmonkey.ecommerce.repository.interfaces.UsuarioDAO;
+import com.hackmonkey.ecommerce.service.interfaces.UsuarioService;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{

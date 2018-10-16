@@ -8,10 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.hackmonkey.ecommerce.entity.Segmento;
 import com.hackmonkey.ecommerce.entity.Usuario;
 import com.hackmonkey.ecommerce.entity.seguridad.Rol;
 import com.hackmonkey.ecommerce.entity.seguridad.UsuarioRol;
-import com.hackmonkey.ecommerce.service.UsuarioService;
+import com.hackmonkey.ecommerce.service.interfaces.SegmentoService;
+import com.hackmonkey.ecommerce.service.interfaces.UsuarioService;
 import com.hackmonkey.ecommerce.util.SeguridadUtilidad;
 
 @SpringBootApplication
@@ -19,6 +21,9 @@ public class EcommerceApplication implements CommandLineRunner{
 
 	@Autowired
 	UsuarioService usuarioService;
+	
+	@Autowired
+	SegmentoService segmentoService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(EcommerceApplication.class, args);
@@ -39,5 +44,21 @@ public class EcommerceApplication implements CommandLineRunner{
 		usuarioRols.add(new UsuarioRol(user1, role1));
 		System.out.println("INICIO RUN()");
 		usuarioService.crearUsuario(user1, usuarioRols);
+		
+		
+		Segmento segmento = new Segmento();
+		segmento.setNombreSegmento("HOMBRE");
+		segmento.setEstado(true);
+		segmentoService.guardar(segmento);
+		
+		Segmento segmento2 = new Segmento();
+		segmento2.setNombreSegmento("MUJER");
+		segmento2.setEstado(true);
+		segmentoService.guardar(segmento2);
+		
+		Segmento segmento3 = new Segmento();
+		segmento3.setNombreSegmento("HOGAR");
+		segmento3.setEstado(true);
+		segmentoService.guardar(segmento3);
 	}
 }

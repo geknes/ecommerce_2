@@ -1,4 +1,4 @@
-package com.hackmonkey.ecommerce.service.impl;
+package com.hackmonkey.ecommerce.service.implementacion;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.hackmonkey.ecommerce.entity.Usuario;
-import com.hackmonkey.ecommerce.repository.UsuarioDAO;
+import com.hackmonkey.ecommerce.repository.interfaces.UsuarioDAO;
 
 @Service
 public class UsuarioSecurityServiceImpl implements UserDetailsService{

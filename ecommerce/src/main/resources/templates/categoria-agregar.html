@@ -75,16 +75,22 @@
             <div class="col-lg-9 container-fluid mt-3">
           
                 <div class="row">
-                    <div class="col-lg-offset-3">
-                    	<form th:action="@{/segmento/agregar}" method="post">
-                    		<span>SEGMENTO: </span>
-                    		<input hidden="hidden" name="idSegmento" id="idSegmento" th:value="${segmento.idSegmento}">
-	                        <input type="text" required="required" name="nombreSegmento" id="nombreSegmento" th:value="${segmento.nombreSegmento}">
+                		<form th:action="@{/categoria/agregar}" method="post">
+	                		<select id="idSegmento" name="idSegmento" required="required">
+	                			<option disabled selected="true" value="">Seleccione una opción...</option>
+	                			<option data-th-each="segmento : ${lstSegmentos}" 
+	                					th:value="${segmento.idSegmento}" 
+	                					th:text="${segmento.nombreSegmento}"
+	                					th:selected="${null!=categoria.idCategoria}">
+	                			</option>
+	                		</select>
+                    		<span>CATEGORIA: </span>
+                    		<input hidden="hidden" name="idCategoria" id="idCategoria" th:value="${categoria.idCategoria}">
+	                        <input type="text" required="required" name="nombreCategoria" id="nombreCategoria" th:value="${categoria.nombreCategoria}">
 	                        <button type="submit">GUARDAR</button>
 	                        <!--<button>MODIFICAR</button>-->
-	                        <button><a th:href="@{/segmento/listado}" >CANCELAR</a></button>
+	                        <button><a th:href="@{/categoria/listado}">CANCELAR</a></button>
                     	</form>
-                    </div>
                 </div>
                 
                 

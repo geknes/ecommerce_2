@@ -76,17 +76,35 @@
           
                 <div class="row">
                     <div class="col-lg-offset-3">
-                    	<form th:action="@{/segmento/agregar}" method="post">
-                    		<span>SEGMENTO: </span>
-                    		<input hidden="hidden" name="idSegmento" id="idSegmento" th:value="${segmento.idSegmento}">
-	                        <input type="text" required="required" name="nombreSegmento" id="nombreSegmento" th:value="${segmento.nombreSegmento}">
-	                        <button type="submit">GUARDAR</button>
-	                        <!--<button>MODIFICAR</button>-->
-	                        <button><a th:href="@{/segmento/listado}" >CANCELAR</a></button>
-                    	</form>
+                        <a type="button" th:href="@{/categoria/agregar}">NUEVO</a>
                     </div>
                 </div>
-                
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                       <th scope="col">Segmento</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-th-each="categoria : ${listCategorias}">
+                        <th th:text="${categoria.idCategoria}"></th>
+                        <th th:text="${categoria.nombreCategoria}"></th>
+                        <th th:text="${categoria.segmento.nombreSegmento}"></th>
+                        <th th:text="${categoria.estado}"></th>
+                        <!-- <td><a href="">Editar</a>/<a href="">Eliminar</a></td> -->
+                        <td>
+	                        <a th:href="@{/categoria/editar(id=${categoria.idCategoria})}">Editar</a>
+	                        <span> / </span>
+	                        <a th:href="@{/categoria/eliminar(id=${categoria.idCategoria})}">Eliminar</a>
+                        </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
                 
             </div>
             </div>

@@ -94,7 +94,11 @@
                         <th th:text="${segmento.nombreSegmento}">1</th>
                         <th th:text="${segmento.estado}">1</th>
                         <!-- <td><a href="">Editar</a>/<a href="">Eliminar</a></td> -->
-                        <td><a th:href="@{/segmento/eliminar(id=${segmento.idSegmento})}"><span th:text="${segmento.nombreSegmento}"></span></a></td>
+                        <td>
+	                        <a th:href="@{/segmento/editar(id=${segmento.idSegmento})}">Editar</a>
+	                        <span> / </span>
+	                        <a th:href="@{/segmento/eliminar(id=${segmento.idSegmento})}">Eliminar</a>
+                        </td>
                         </tr>
                         
                     </tbody>

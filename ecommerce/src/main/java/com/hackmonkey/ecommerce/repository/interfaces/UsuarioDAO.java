@@ -1,4 +1,4 @@
-package com.hackmonkey.ecommerce.repository;
+package com.hackmonkey.ecommerce.repository.interfaces;
 
 import org.springframework.data.repository.CrudRepository;
 

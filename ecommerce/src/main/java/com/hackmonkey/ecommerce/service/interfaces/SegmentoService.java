@@ -1,4 +1,4 @@
-package com.hackmonkey.ecommerce.service;
+package com.hackmonkey.ecommerce.service.interfaces;
 
 
 import java.util.List;
@@ -12,4 +12,8 @@ public interface SegmentoService {
 	public List<Segmento> listar();
 	
 	public void eliminar(Long id);
+	
+	public Segmento buscarPorId(Long id);
+	
+	//public Segmento actualizar(Segmento segmento);
 }

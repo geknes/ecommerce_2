@@ -1,4 +1,4 @@
-package com.hackmonkey.ecommerce.service;
+package com.hackmonkey.ecommerce.service.interfaces;
 
 import java.util.Set;
 

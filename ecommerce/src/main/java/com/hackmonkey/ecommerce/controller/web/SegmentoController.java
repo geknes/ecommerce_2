@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hackmonkey.ecommerce.entity.Segmento;
-import com.hackmonkey.ecommerce.service.SegmentoService;
+import com.hackmonkey.ecommerce.service.interfaces.SegmentoService;
 
 @Controller
 @RequestMapping("/segmento")
@@ -31,10 +31,26 @@ public class SegmentoController {
 		return "segmento-agregar";
 	}
 	
+	@GetMapping("/editar")
+	public String editar(@RequestParam("id") Long id, Model model)
+	{
+		Segmento segmento = new Segmento();
+		segmento = segmentoService.buscarPorId(id);
+		model.addAttribute("segmento",segmento);
+		return "segmento-agregar";
+	}
+	
 	@PostMapping("/agregar")
 	public String agregarSegmento(@ModelAttribute("segmento") Segmento segmento, HttpServletRequest request)
-	{
-		segmentoService.guardar(segmento);
+	{	if (null == segmento.getIdSegmento()) {
+			System.out.println("GUARDAR");
+			segmentoService.guardar(segmento);
+		}
+		else {
+			System.out.println("EDITAR");
+			segmentoService.guardar(segmento);
+		} 
+		
 		return "redirect:/segmento/listado";
 	}
 	

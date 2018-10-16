@@ -1,12 +1,14 @@
 package com.hackmonkey.ecommerce.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +31,9 @@ public class Segmento implements Serializable{
 	
 	@Column(name="estado")
 	private boolean estado;
+	
+	@OneToMany(mappedBy="segmento")
+	private Set<Categoria> categorias;
 	
 	public Segmento() {
 		super();
@@ -53,11 +58,17 @@ public class Segmento implements Serializable{
 		this.estado = estado;
 	}
 	
+	public Set<Categoria> getCategorias() {
+		return categorias;
+	}
+	public void setCategorias(Set<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	
 	@Override
 	public String toString() {
-		return "Segmento [idSegmento=" + idSegmento + ", nombreSegmento=" + nombreSegmento + ", estado=" + estado + "]";
-	} 
-	
-	
+		return "Segmento [idSegmento=" + idSegmento + ", nombreSegmento=" + nombreSegmento + ", estado=" + estado
+				+ ", categorias=" + categorias + "]";
+	}
 	
 }
