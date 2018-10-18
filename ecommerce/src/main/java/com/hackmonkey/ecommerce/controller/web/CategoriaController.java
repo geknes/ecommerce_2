@@ -39,23 +39,24 @@ public class CategoriaController {
 		return "categoria-agregar";
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@PostMapping("/agregar")
 	public String agregarSegmento(	@ModelAttribute("categoria") Categoria categoria,
-									@ModelAttribute("idSegmento") String idSegmento, 
+									@ModelAttribute("idSegmento") Long idSegmento, 
 									HttpServletRequest request)
 	{	
 		if (!idSegmento.equals("")) 
 		{
 			System.out.println(idSegmento);
-			Segmento segmento = segmentoService.buscarPorId(Long.valueOf(idSegmento));
-			System.out.println(segmento.toString());
+			Segmento segmento = segmentoService.buscarPorId(Long.valueOf(idSegmento.longValue()));
+			//System.out.println(segmento.toString());
 			categoria.setSegmento(segmento);
 			
 			categoriaService.guardar(categoria);
 		}
 		else {
-		///	System.out.println("EDITAR");
-		//	categoriaService.guardar(categoria);
+			System.out.println("EDITAR");
+			categoriaService.guardar(categoria);
 			return "redirect:/categoria/agregar";
 		} 
 		return "redirect:/categoria/listado";

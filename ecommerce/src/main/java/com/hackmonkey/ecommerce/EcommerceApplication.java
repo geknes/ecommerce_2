@@ -8,10 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.hackmonkey.ecommerce.entity.Maestra;
 import com.hackmonkey.ecommerce.entity.Segmento;
 import com.hackmonkey.ecommerce.entity.Usuario;
 import com.hackmonkey.ecommerce.entity.seguridad.Rol;
 import com.hackmonkey.ecommerce.entity.seguridad.UsuarioRol;
+import com.hackmonkey.ecommerce.service.interfaces.MaestraService;
 import com.hackmonkey.ecommerce.service.interfaces.SegmentoService;
 import com.hackmonkey.ecommerce.service.interfaces.UsuarioService;
 import com.hackmonkey.ecommerce.util.SeguridadUtilidad;
@@ -25,11 +27,15 @@ public class EcommerceApplication implements CommandLineRunner{
 	@Autowired
 	SegmentoService segmentoService;
 	
+	@Autowired
+	MaestraService maestraService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
 	
 	public void run(String... args) throws Exception {
+		
 		Usuario user1 = new Usuario();
 		user1.setUsername("admin");
 		user1.setPrimerNombre("Jorge");
@@ -60,5 +66,24 @@ public class EcommerceApplication implements CommandLineRunner{
 		segmento3.setNombreSegmento("HOGAR");
 		segmento3.setEstado(true);
 		segmentoService.guardar(segmento3);
+		
+		Maestra maestra = new Maestra();
+		maestra.setCodigoRegistro("1");
+		maestra.setEstado(true);
+		maestra.setNombreCorto("TALLAS");
+		maestra.setOrden("0");
+		maestra.setSweditable(true);
+		maestra.setValor1("NOMBRE DE TABLA");
+		maestraService.guardar(maestra);
+		
+		Maestra maestra2 = new Maestra();
+		maestra2.setCodigoRegistro("2");
+		maestra2.setEstado(true);
+		maestra2.setNombreCorto("SEXO");
+		maestra2.setOrden("0");
+		maestra2.setSweditable(true);
+		maestra2.setValor1("NOMBRE DE TABLA");
+		maestraService.guardar(maestra2);
+		
 	}
 }

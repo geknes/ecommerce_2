@@ -37,8 +37,8 @@
                         <ul class="nav flex-column mt-4">
                             <li class="nav-item">
                                 <button type="button" class="btn bg-white p-0">
-                                    <a href="./categorias-admin.html">
-                                        <span class="text-dark h6"><strong>categoriaS</strong></span>
+                                    <a href="./maestras-admin.html">
+                                        <span class="text-dark h6"><strong>maestraS</strong></span>
                                     </a>
                                 </button>
                             </li>
@@ -75,21 +75,21 @@
             <div class="col-lg-9 container-fluid mt-3">
           
                 <div class="row">
-                		<form th:action="@{/categoria/agregar}" method="post">
-	                	 	<select id="idSegmento" name="idSegmento" required="required">
+                		<form th:action="@{/maestra/agregar}" method="post">
+	                		<select id="idMaestra" name="idMaestra" required="required">
 	                			<option disabled selected="true" value="">Seleccione una opción...</option>
-	                			<option data-th-each="segmento : ${lstSegmentos}" 
-	                					th:value="${segmento.idSegmento}" 
-	                					th:text="${segmento.nombreSegmento}"
-	                					th:selected="${null!=categoria.idCategoria}">
+	                			<option data-th-each="tabla : ${listTablasMestras}" 
+	                					th:value="${tabla.idMaestra}" 
+	                					th:text="${tabla.nombreCorto}"
+	                					th:selected="${null!=maestra.idMaestra}">
 	                			</option>
-	                		</select> 
-                    		<span>categoria: </span>
-                    		<input hidden="hidden" name="idCategoria" id="idCategoria" th:value="${categoria.idCategoria}">
-	                        <input type="text" required="required" name="nombreCategoria" id="nombreCategoria" th:value="${categoria.nombreCategoria}">
+	                		</select>
+                    		<span>maestra: </span>
+                    		<input hidden="hidden" name="idMaestra" id="idMaestra" th:value="${maestra.idMaestra}">
+	                        <input type="text" required="required" name="nombreCorto" id="nombreCorto" th:value="${maestra.nombreCorto}">
 	                        <button type="submit">GUARDAR</button>
 	                        <!--<button>MODIFICAR</button>-->
-	                        <button><a th:href="@{/categoria/listado}">CANCELAR</a></button>
+	                        <button><a th:href="@{/maestra/listado}">CANCELAR</a></button>
                     	</form>
                 </div>
                 
