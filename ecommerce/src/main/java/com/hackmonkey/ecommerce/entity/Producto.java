@@ -29,7 +29,7 @@ public class Producto implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_producto")
-	private Long idProdcuto;
+	private Long idProducto;
 	
 	@Column(name="nombre_producto")
 	private String nombreProducto;
@@ -42,6 +42,12 @@ public class Producto implements Serializable{
 	
 	@Column(name="stock")
 	private int stock;
+	
+	@Column(name="precio_venta")
+	private double precioVenta;
+	
+	@Column(name="precio_interno")
+	private double precioInterno;
 	
 	@Column(name="estado")
 	private boolean estado=true;
@@ -61,12 +67,12 @@ public class Producto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getIdProdcuto() {
-		return idProdcuto;
+	public Long getIdProducto() {
+		return idProducto;
 	}
 
-	public void setIdProdcuto(Long idProdcuto) {
-		this.idProdcuto = idProdcuto;
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	public String getNombreProducto() {
@@ -99,6 +105,22 @@ public class Producto implements Serializable{
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public double getPrecioVenta() {
+		return precioVenta;
+	}
+
+	public void setPrecioVenta(double precioVenta) {
+		this.precioVenta = precioVenta;
+	}
+
+	public double getPrecioInterno() {
+		return precioInterno;
+	}
+
+	public void setPrecioInterno(double precioInterno) {
+		this.precioInterno = precioInterno;
 	}
 
 	public boolean isEstado() {
@@ -135,9 +157,12 @@ public class Producto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Producto [idProdcuto=" + idProdcuto + ", nombreProducto=" + nombreProducto + ", descripcion="
-				+ descripcion + ", detalle=" + detalle + ", stock=" + stock + ", estado=" + estado + ", imagen="
-				+ imagen + ", categoria=" + categoria + ", maestras=" + maestras + "]";
+		return "Producto [idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", descripcion="
+				+ descripcion + ", detalle=" + detalle + ", stock=" + stock + ", precioVenta=" + precioVenta
+				+ ", precioInterno=" + precioInterno + ", estado=" + estado + ", imagen=" + imagen + ", categoria="
+				+ categoria + ", maestras=" + maestras + "]";
 	}
+
+	
 
 }

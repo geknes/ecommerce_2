@@ -37,8 +37,8 @@
                         <ul class="nav flex-column mt-4">
                             <li class="nav-item">
                                 <button type="button" class="btn bg-white p-0">
-                                    <a href="./maestras-admin.html">
-                                        <span class="text-dark h6"><strong>maestraS</strong></span>
+                                    <a href="./productos-admin.html">
+                                        <span class="text-dark h6"><strong>productoS</strong></span>
                                     </a>
                                 </button>
                             </li>
@@ -76,32 +76,30 @@
           
                 <div class="row">
                     <div class="col-lg-offset-3">
-                        <a type="button" th:href="@{/maestra/agregar}">NUEVO</a>
+                        <a type="button" th:href="@{/producto/agregar}">NUEVO</a>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tabla</th>
-                        <th scope="col">Registro</th>
-                       	<th scope="col">Valor</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Stock</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Accion</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-th-each="maestra : ${listMaestras}">
-                        <th th:text="${maestra.idMaestra}"></th>
-                        <th th:text="${maestra.nombreCorto}"></th>
-                        <th th:text="${maestra.nombreLargo}"></th>
-                        <th th:text="${maestra.valor1}"></th>
-                        <th th:text="${maestra.estado}"></th>
+                        <tr data-th-each="producto : ${listProductos}">
+                        <th th:text="${producto.idProducto}"></th>
+                        <th th:text="${producto.nombreProducto}"></th>
+                        <th th:text="${producto.stock}"></th>
+                        <th th:text="${producto.estado}"></th>
                         <!-- <td><a href="">Editar</a>/<a href="">Eliminar</a></td> -->
                         <td>
-	                        <a th:href="@{/maestra/editar(id=${maestra.idMaestra})}">Editar</a>
+	                        <a th:href="@{/producto/editar(id=${producto.idProducto})}">Editar</a>
 	                        <span> / </span>
-	                        <a th:href="@{/maestra/eliminar(id=${maestra.idMaestra})}">Eliminar</a>
+	                        <a th:href="@{/producto/eliminar(id=${producto.idProducto})}">Eliminar</a>
                         </td>
                         </tr>
                         
