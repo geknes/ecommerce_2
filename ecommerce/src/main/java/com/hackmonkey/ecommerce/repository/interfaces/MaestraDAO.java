@@ -11,8 +11,14 @@ public interface MaestraDAO extends CrudRepository<Maestra, Long>{
 
 	Maestra findByIdMaestra(Long id);
 	
-	Maestra findByCodigoRegistro(String codigoRegistro);
+	Maestra findByCodigoRegistro(Long codigoRegistro);
 	
 	@Query("select a from Maestra a where a.orden = 0")
 	List<Maestra> listarTablas();
+	
+	@Query("select a from Maestra a where a.orden <> 0")
+	List<Maestra> listarHijos();
+	
+	@Query("select max(a.orden) from Maestra a where a.codigoRegistro = ?1")
+	Integer maxNumeroOrden(Long codigoRegistro);
 }

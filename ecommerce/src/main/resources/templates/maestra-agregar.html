@@ -73,10 +73,9 @@
             </div>
 
             <div class="col-lg-9 container-fluid mt-3">
-          
-                <div class="row">
-                		<form th:action="@{/maestra/agregar}" method="post">
-	                		<select id="idMaestra" name="idMaestra" required="required">
+          		<form th:action="@{/maestra/agregar}" method="post">
+                	<div class="row">
+	                		<select id="idTablaMaestra" name="idTablaMaestra" required="required">
 	                			<option disabled selected="true" value="">Seleccione una opción...</option>
 	                			<option data-th-each="tabla : ${listTablasMestras}" 
 	                					th:value="${tabla.idMaestra}" 
@@ -84,15 +83,22 @@
 	                					th:selected="${null!=maestra.idMaestra}">
 	                			</option>
 	                		</select>
-                    		<span>maestra: </span>
+                    		
+                	</div>
+                	<div class="row">
+                		<span>NOMBRE CORTO : </span>
                     		<input hidden="hidden" name="idMaestra" id="idMaestra" th:value="${maestra.idMaestra}">
 	                        <input type="text" required="required" name="nombreCorto" id="nombreCorto" th:value="${maestra.nombreCorto}">
+	                        
+                	</div>
+                	<div class="row">
+                		<span>NOMBRE LARGO : </span>
+	                        <input type="text" required="required" name="nombreLargo" id="nombreLargo" th:value="${maestra.nombreLargo}">
 	                        <button type="submit">GUARDAR</button>
 	                        <!--<button>MODIFICAR</button>-->
-	                        <button><a th:href="@{/maestra/listado}">CANCELAR</a></button>
-                    	</form>
-                </div>
-                
+	                    <button><a th:href="@{/maestra/listado}">CANCELAR</a></button>
+                	</div>
+                </form>
                 
             </div>
             </div>

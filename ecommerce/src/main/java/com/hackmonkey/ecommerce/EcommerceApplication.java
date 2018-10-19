@@ -68,22 +68,31 @@ public class EcommerceApplication implements CommandLineRunner{
 		segmentoService.guardar(segmento3);
 		
 		Maestra maestra = new Maestra();
-		maestra.setCodigoRegistro("1");
+		maestra.setCodigoRegistro(1L);
 		maestra.setEstado(true);
 		maestra.setNombreCorto("TALLAS");
-		maestra.setOrden("0");
+		maestra.setOrden(0);
 		maestra.setSweditable(true);
 		maestra.setValor1("NOMBRE DE TABLA");
 		maestraService.guardar(maestra);
 		
 		Maestra maestra2 = new Maestra();
-		maestra2.setCodigoRegistro("2");
+		maestra2.setCodigoRegistro(2L);
 		maestra2.setEstado(true);
 		maestra2.setNombreCorto("SEXO");
-		maestra2.setOrden("0");
+		maestra2.setOrden(0);
 		maestra2.setSweditable(true);
 		maestra2.setValor1("NOMBRE DE TABLA");
 		maestraService.guardar(maestra2);
+		
+		Maestra maestra3 = new Maestra();
+		maestra3.setCodigoRegistro(3L);
+		maestra3.setEstado(true);
+		maestra3.setNombreCorto("COLOR");
+		maestra3.setOrden(0);
+		maestra3.setSweditable(true);
+		maestra3.setValor1("NOMBRE DE TABLA");
+		maestraService.guardar(maestra3);
 		
 	}
 }

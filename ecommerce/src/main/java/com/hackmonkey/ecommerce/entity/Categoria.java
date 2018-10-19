@@ -1,6 +1,7 @@
 package com.hackmonkey.ecommerce.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,6 +38,9 @@ public class Categoria implements Serializable{
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_segmento")
 	private Segmento segmento;
+	
+	@OneToMany(mappedBy="categoria")
+	private Set<Producto> productos;
 
 	public Categoria() {
 		super();
@@ -73,11 +78,21 @@ public class Categoria implements Serializable{
 	public void setSegmento(Segmento segmento) {
 		this.segmento = segmento;
 	}
+	
+	
+
+	public Set<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(Set<Producto> productos) {
+		this.productos = productos;
+	}
 
 	@Override
 	public String toString() {
 		return "Categoria [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + ", estado=" + estado
-				+ ", segmento=" + segmento + "]";
+				+ ", segmento=" + segmento + ", productos=" + productos + "]";
 	}
 
 }

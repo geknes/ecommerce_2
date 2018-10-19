@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +27,7 @@ public class Maestra implements Serializable{
 	private Long idMaestra;
 	
 	@Column(name="codigo_registro")
-	private String codigoRegistro;
+	private Long codigoRegistro;
 	
 	@Column(name="nombre_corto")
 	private String nombreCorto;
@@ -33,7 +36,7 @@ public class Maestra implements Serializable{
 	private String nombreLargo;
 	
 	@Column(name="orden")
-	private String orden;
+	private Integer orden;
 	
 	@Column(name="valor1")
 	private String valor1;
@@ -56,6 +59,10 @@ public class Maestra implements Serializable{
 	@Column(name="sweditable")
 	private boolean sweditable;
 	
+	@ManyToOne(optional = true,fetch=FetchType.LAZY)
+	@JoinColumn(name="id_producto")
+	private Producto producto;
+	
 	
 	public Maestra() {
 		super();
@@ -70,12 +77,12 @@ public class Maestra implements Serializable{
 		this.idMaestra = idMaestra;
 	}
 
-	public String getCodigoRegistro() {
+	public Long getCodigoRegistro() {
 		return codigoRegistro;
 	}
 
 
-	public void setCodigoRegistro(String codigoRegistro) {
+	public void setCodigoRegistro(Long codigoRegistro) {
 		this.codigoRegistro = codigoRegistro;
 	}
 
@@ -100,12 +107,12 @@ public class Maestra implements Serializable{
 	}
 
 
-	public String getOrden() {
+	public Integer getOrden() {
 		return orden;
 	}
 
 
-	public void setOrden(String orden) {
+	public void setOrden(Integer orden) {
 		this.orden = orden;
 	}
 
@@ -178,14 +185,21 @@ public class Maestra implements Serializable{
 	public void setSweditable(boolean sweditable) {
 		this.sweditable = sweditable;
 	}
+	
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
 
 	@Override
 	public String toString() {
 		return "Maestra [idMaestra=" + idMaestra + ", codigoRegistro=" + codigoRegistro + ", nombreCorto=" + nombreCorto
 				+ ", nombreLargo=" + nombreLargo + ", orden=" + orden + ", valor1=" + valor1 + ", valor2=" + valor2
 				+ ", valor3=" + valor3 + ", valor4=" + valor4 + ", valor5=" + valor5 + ", estado=" + estado
-				+ ", sweditable=" + sweditable + "]";
+				+ ", sweditable=" + sweditable + ", producto=" + producto + "]";
 	}
 
-	
 }

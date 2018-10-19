@@ -23,13 +23,12 @@ public class MaestraServiceImpl implements MaestraService{
 	@Override
 	public List<Maestra> listar() {
 		// TODO Auto-generated method stub
-		return (List<Maestra>) maestraDAO.findAll();
+		return (List<Maestra>) maestraDAO.listarHijos();
 	}
 
 	@Override
 	public void eliminar(Long id) {
-		// TODO Auto-generated method stub
-		
+		maestraDAO.deleteById(id);
 	}
 
 	@Override
@@ -47,6 +46,12 @@ public class MaestraServiceImpl implements MaestraService{
 		
 		Maestra tablaMaestra = buscarPorId(idMaestra);
 		System.out.println(tablaMaestra.toString());
+		maestra.setCodigoRegistro(idMaestra);
+		maestra.setValor1(tablaMaestra.getNombreCorto());
+		
+		Integer numeroOrden = maestraDAO.maxNumeroOrden(tablaMaestra.getCodigoRegistro()) + 1;
+		maestra.setOrden(numeroOrden);
+		maestraDAO.save(maestra);
 		return null;
 	}
 

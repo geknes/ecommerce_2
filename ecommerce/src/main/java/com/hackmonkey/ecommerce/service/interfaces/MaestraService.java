@@ -9,4 +9,6 @@ public interface MaestraService extends BaseService<Maestra>{
 	public List<Maestra> listarTablas();
 	
 	public Maestra guardarHijo(Maestra maestra, Long idMaestra);
+	
+
 }
